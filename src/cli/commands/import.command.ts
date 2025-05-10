@@ -1,24 +1,27 @@
-import {TsvFileReader} from '../../file-reader/tsv-file-reader.js';
-import {Command} from './command.interface.js';
+import chalk from 'chalk';
+import { Command } from './command.interface.js';
+import { TsvFileReader } from '../../shared/libs/file-reader/tsv-file-reader.js';
 
 export class ImportCommand implements Command {
-  public readonly name = '--import';
-
-  public getName(): string{
-    return this.name;
+  public getName() {
+    return '--import';
   }
 
-  public execute(filename: string): void {
-    const fileReader = new TsvFileReader(filename.trim());
+  public execute(...parametrs: string[]): void {
+    const [filename] = parametrs;
+    const fileReader = new TsvFileReader(filename);
 
     try {
       fileReader.read();
-      console.log(fileReader.toArray());
+      const resultArray = fileReader.toArray();
+      console.log(chalk.blue(JSON.stringify(resultArray, null, 2)));
     } catch (err) {
       if (!(err instanceof Error)) {
         throw err;
       }
-      console.log(`Не удалось импортировать данные из файла: '${filename}'`);
+
+      console.error('Cant import from this file');
+      console.error(`Details: ${err.message}`);
     }
   }
 }

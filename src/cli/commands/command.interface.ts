@@ -1,4 +1,4 @@
 export interface Command {
-  readonly name: string;
+  getName(): string;
   execute(...parameters: string[]): void;
 }

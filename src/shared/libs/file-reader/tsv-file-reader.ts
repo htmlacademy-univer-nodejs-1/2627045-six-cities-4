@@ -1,13 +1,13 @@
-import {FileReaderInterface} from './file-reader.interface.js';
-import {Offer} from '../types/offer.type.js';
-import {City} from '../types/city.enum.js';
-import {Housing} from '../types/housing.enum.js';
-import {Conveniences} from '../types/conveniences.enum.js';
-import {User} from '../types/user.type.js';
-import {Coordinates} from '../types/coordinates.type.js';
+import {FileReader} from './file-reader.interface.js';
+import {Offer} from '../../../types/offer.type.js';
+import {City} from '../../../types/city.enum.js';
+import {Housing} from '../../../types/housing.enum.js';
+import {Conveniences} from '../../../types/conveniences.enum.js';
+import {User} from '../../../types/user.type.js';
+import {Coordinates} from '../../../types/coordinates.type.js';
 import {readFileSync} from 'node:fs';
 
-export class TsvFileReader implements FileReaderInterface {
+export class TsvFileReader implements FileReader {
   private rawData = '';
 
   constructor(public readonly filename: string) {
