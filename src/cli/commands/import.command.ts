@@ -4,6 +4,10 @@ import {Command} from './command.interface.js';
 export class ImportCommand implements Command {
   public readonly name = '--import';
 
+  public getName(): string{
+    return this.name;
+  }
+
   public execute(filename: string): void {
     const fileReader = new TsvFileReader(filename.trim());
 
