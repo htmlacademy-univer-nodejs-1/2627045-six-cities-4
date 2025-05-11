@@ -6,3 +6,4 @@ export * from './coordinates.object.js';
 export * from './property-type.enum.js';
 export * from './offer.js';
 export * from './user.js';
+export * from './mock-server-data.type.js';

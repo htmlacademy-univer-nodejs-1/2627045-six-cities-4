@@ -1,14 +1,16 @@
 import { FileReader } from './file-reader.interface.js';
 import { readFileSync } from 'node:fs';
-import { City } from '../../../types/city.enum.js';
-import { PropertyType } from '../../../types/property-type.enum.js';
-import { Amenity } from '../../../types/amenity.enum.js';
-import { Offer } from '../../../types/index.js';
+import { City } from '../../types/city.enum.js';
+import { PropertyType } from '../../types/property-type.enum.js';
+import { Amenity } from '../../types/amenity.enum.js';
+import { Offer } from '../../types/index.js';
 
 export class TSVFileReader implements FileReader {
   private rawData = '';
 
-  constructor(private readonly filename: string) {}
+  constructor(
+    private readonly filename: string
+  ) {}
 
   public read(): void {
     this.rawData = readFileSync(this.filename, { encoding: 'utf-8' });
@@ -27,17 +29,17 @@ export class TSVFileReader implements FileReader {
         title,
         description,
         publicationDate: new Date(publicationDate),
-        city: City[city as keyof typeof City],
+        city: City[city as keyof typeof City], // Преобразование строки в enum City
         previewImage,
-        images: images.split(';'),
+        images: images.split(';'), // Разделение списка изображений по ';'
         isPremium: isPremium === 'true',
         isFavorite: isFavorite === 'true',
         rating: parseFloat(rating),
-        propertyType: PropertyType[propertyType as keyof typeof PropertyType],
+        propertyType: PropertyType[propertyType as keyof typeof PropertyType], // Преобразование строки в enum PropertyType
         rooms: parseInt(rooms, 10),
         guests: parseInt(guests, 10),
         price: parseInt(price, 10),
-        amenities: amenities.split(';').map((amenity) => Amenity[amenity as keyof typeof Amenity]),
+        amenities: amenities.split(';').map((amenity) => Amenity[amenity as keyof typeof Amenity]), // Преобразование строк в enum Amenities
         author: {
           name: authorName,
           email: authorEmail,
