@@ -1,48 +1,55 @@
-import {FileReader} from './file-reader.interface.js';
-import {Offer} from '../../../types/offer.type.js';
-import {City} from '../../../types/city.enum.js';
-import {Housing} from '../../../types/housing.enum.js';
-import {Conveniences} from '../../../types/conveniences.enum.js';
-import {User} from '../../../types/user.type.js';
-import {Coordinates} from '../../../types/coordinates.type.js';
-import {readFileSync} from 'node:fs';
+import { FileReader } from './file-reader.interface.js';
+import { readFileSync } from 'node:fs';
+import { City } from '../../../types/city.enum.js';
+import { PropertyType } from '../../../types/property-type.enum.js';
+import { Amenity } from '../../../types/amenity.enum.js';
+import { Offer } from '../../../types/index.js';
 
-export class TsvFileReader implements FileReader {
+export class TSVFileReader implements FileReader {
   private rawData = '';
 
-  constructor(public readonly filename: string) {
-  }
+  constructor(private readonly filename: string) {}
 
   public read(): void {
-    this.rawData = readFileSync(this.filename, {encoding: 'utf-8'});
+    this.rawData = readFileSync(this.filename, { encoding: 'utf-8' });
   }
 
   public toArray(): Offer[] {
     if (!this.rawData) {
-      return [];
+      throw new Error('File was not read');
     }
+
     return this.rawData
       .split('\n')
       .filter((row) => row.trim().length > 0)
       .map((line) => line.split('\t'))
-      .map(([name, description, date, city, previewImg, images, flagIsPremium, flagIsFavourites, rating, typeHousing, countRooms, countPeople, price, conveniences, author, countComments, coordinates]) => ({
-        name: name,
-        description: description,
-        date: new Date(date),
-        city: city as City,
-        previewImg: previewImg,
+      .map(([title, description, publicationDate, city, previewImage, images, isPremium, isFavorite, rating, propertyType, rooms, guests, price, amenities, authorName, authorEmail, authorAvatar, commentsCount, latitude, longitude]) => ({
+        title,
+        description,
+        publicationDate: new Date(publicationDate),
+        city: City[city as keyof typeof City],
+        previewImage,
         images: images.split(';'),
-        flagIsPremium: flagIsPremium as unknown as boolean,
-        flagIsFavourites: flagIsFavourites as unknown as boolean,
-        rating: rating as unknown as 1 | 2 | 3 | 4 | 5,
-        housing: typeHousing as Housing,
-        countRooms: countRooms as unknown as 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8,
-        countPeople: countPeople as unknown as 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10,
-        price: Number.parseInt(price, 10),
-        conveniences: conveniences as Conveniences,
-        author: author as unknown as User,
-        countComments: Number.parseInt(countComments, 10),
-        coordinates: coordinates.split(',') as unknown as Coordinates,
+        isPremium: isPremium === 'true',
+        isFavorite: isFavorite === 'true',
+        rating: parseFloat(rating),
+        propertyType: PropertyType[propertyType as keyof typeof PropertyType],
+        rooms: parseInt(rooms, 10),
+        guests: parseInt(guests, 10),
+        price: parseInt(price, 10),
+        amenities: amenities.split(';').map((amenity) => Amenity[amenity as keyof typeof Amenity]),
+        author: {
+          name: authorName,
+          email: authorEmail,
+          avatar: authorAvatar,
+          password: '',
+          userType: 'pro',
+        },
+        commentsCount: parseInt(commentsCount, 10),
+        coordinates: {
+          latitude: parseFloat(latitude),
+          longitude: parseFloat(longitude),
+        },
       }));
   }
 }
