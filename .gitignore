@@ -3,6 +3,7 @@
 /build/
 /lib/
 /dist/
+./mongodb
 /docs/
 .idea/*
 
