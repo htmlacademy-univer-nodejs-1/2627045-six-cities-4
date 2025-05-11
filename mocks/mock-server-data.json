@@ -1,0 +1,44 @@
+{
+  "api":{
+    "names": [
+      "Просторный уютный дом",
+      "Совеременная квартира на окраине"
+    ],
+    "cities": [
+      "Paris",
+      "Cologne",
+      "Brussels",
+      "Amsterdam",
+      "Hamburg",
+      "Dusseldorf"
+    ],
+    "pricies":[
+      10000,
+      20000
+    ],
+    "Conveniences": [
+      "Breakfast",
+      "AirConditioning",
+      "LaptopFriendlyWorkspace",
+      "BabySeat",
+      "Washer",
+      "Towels",
+      "Fridge"
+    ],
+    "Ratings":[
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "Images": [
+      "https://example.com/photo1.jpg",
+      "https://example.com/photo2.jpg",
+      "https://example.com/photo3.jpg",
+      "https://example.com/photo4.jpg",
+      "https://example.com/photo5.jpg",
+      "https://example.com/photo6.jpg"
+    ]
+  }
+}
