@@ -1,9 +1,9 @@
-export enum Amenity {
+export enum ConveniencesType {
   Breakfast = 'Breakfast',
-  AirConditioning = 'Air conditioning',
-  LaptopFriendlyWorkspace = 'Laptop friendly workspace',
-  BabySeat = 'Baby seat',
+  Air_conditioning = 'Air conditioning',
+  Laptop_friendly_workspace = 'Laptop friendly workspace',
+  Baby_seat = 'Baby seat',
   Washer = 'Washer',
   Towels = 'Towels',
-  Fridge = 'Fridge',
+  Fridge = 'Fridge'
 }

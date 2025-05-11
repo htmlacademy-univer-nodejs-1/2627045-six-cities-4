@@ -1,25 +1,25 @@
-import { Amenity } from './amenity.enum.js';
-import { City } from './city.enum.js';
-import { Coordinates } from './coordinates.js';
-import { PropertyType } from './property-type.enum.js';
+import { ConveniencesType } from './amenity.enum.js';
+import { CityType } from './city.enum.js';
+import { CoordinatesType } from './coordinates.js';
+import { TypeHousing } from './property-type.enum.js';
 import { User } from './user.js';
 
-export interface Offer {
-  title: string;
+export type Offer = {
+  name: string;
   description: string;
-  publicationDate: Date;
-  city: City;
-  previewImage: string;
+  date: Date;
+  city: CityType;
+  previewImg: string;
   images: string[];
-  isPremium: boolean;
-  isFavorite: boolean;
-  rating: number;
-  propertyType: PropertyType;
-  rooms: number;
-  guests: number;
+  flagIsPremium: boolean;
+  flagIsFavourites: boolean;
+  rating: 1 | 2 | 3 | 4 | 5;
+  typeHousing: TypeHousing;
+  countRooms: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+  countPeople: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
   price: number;
-  amenities: Amenity[];
+  conveniences: ConveniencesType;
   author: User;
-  commentsCount: number;
-  coordinates: Coordinates;
+  countComments: number;
+  coordinates: CoordinatesType;
 }

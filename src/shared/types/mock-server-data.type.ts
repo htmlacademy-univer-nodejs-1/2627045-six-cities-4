@@ -1,10 +1,10 @@
-export type MockServerData = {
-  titles: string[];
-  descriptions: string[];
-  previewImages: string[];
+export type MockData = {
+  name: string[];
+  description: string[];
+  previewImg: string[];
   images: string[];
-  authors: string[];
-  emails: string[];
-  avatars: string[];
-  passwords: string[];
-};
+  conveniences: string[];
+  countComments: string[];
+  author: string[];
+  coordinates: string[];
+}

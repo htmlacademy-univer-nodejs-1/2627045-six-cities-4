@@ -1,7 +1,7 @@
-export interface User {
+export type User = {
     name: string;
     email: string;
     avatar?: string;
     password: string;
-    userType: 'обычный' | 'pro';
+    userType: 'normal' | 'pro';
 }
