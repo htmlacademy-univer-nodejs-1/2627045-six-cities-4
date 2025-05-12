@@ -4,7 +4,6 @@ import { CoordinatesType } from '../../../types/coordinates.js';
 import { TypeHousing } from '../../../types/property-type.enum.js';
 import { User } from '../../../types/user.js';
 
-
 export default class CreateOfferDto {
   name!: string;
   description!: string;
