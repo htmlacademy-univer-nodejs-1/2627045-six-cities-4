@@ -1,10 +1,10 @@
-/* eslint-disable @typescript-eslint/no-unsafe-declaration-merging */
 import typegoose, {defaultClasses, getModelForClass} from '@typegoose/typegoose';
 import {createSHA256} from '../../helpers/common.js';
 import { User } from '../../types/user.js';
 
 const {prop, modelOptions} = typegoose;
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
 export interface UserEntity extends defaultClasses.Base {
 }
 
@@ -13,6 +13,7 @@ export interface UserEntity extends defaultClasses.Base {
     collection: 'users'
   }
 })
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
 export class UserEntity extends defaultClasses.TimeStamps implements User {
     @prop({unique: true, required: true})
   public email: string;
@@ -24,7 +25,7 @@ export class UserEntity extends defaultClasses.TimeStamps implements User {
     public avatar?: string;
 
     @prop({required: true, default: ''})
-    private password!: string;
+    public password!: string;
 
     constructor(userData: User) {
       super();

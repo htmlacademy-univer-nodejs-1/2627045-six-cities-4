@@ -177,7 +177,7 @@ paths:
   /comments?count=50:
     get:
       tags:
-        - comments
+        - comment
       summary: Список комментариев
       description: Получение списка комментариев для предложений
       responses:
@@ -186,7 +186,7 @@ paths:
 
     post:
       tags:
-        - comments
+        - comment
       summary: Добавление нового комментария
       description: Оставление комментария к предложению
       responses:
@@ -285,7 +285,7 @@ components:
           example: "Интернет, кондиционер"
         author:
           type: string
-          example: "Алексей Иванов"
+          example: "Алексей Смирнов"
         countComments:
           type: integer
           example: 15
@@ -301,4 +301,4 @@ components:
           example: "Отличное предложение!"
         author:
           type: string
-          example: "Герман Марков"
+          example: "Олег Петров"
