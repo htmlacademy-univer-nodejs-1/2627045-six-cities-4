@@ -1,8 +1,8 @@
 import { ConveniencesType } from '../types/amenity.enum.js';
 import { CityType } from '../types/city.enum.js';
 import { CoordinatesType } from '../types/coordinates.js';
+import { Offer } from '../types/index.js';
 import { TypeHousing } from '../types/property-type.enum.js';
-import { Offer } from '../types/offer.js';
 import { User } from '../types/user.js';
 
 

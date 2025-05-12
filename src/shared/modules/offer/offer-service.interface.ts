@@ -12,7 +12,6 @@ export interface OfferServiceInterface {
     getDetailsInfo(offerId: string): Promise<DocumentType<OfferEntity> | null>;
     incCommentCount(offerId: string): Promise<DocumentType<OfferEntity> | null>;
     getPremium(): Promise<DocumentType<OfferEntity>[]>;
-    getFavorite(): Promise<DocumentType<OfferEntity>[]>;
     calculateRating(rating: number, newRating: number, countRating:number, offerId:string): Promise<void>;
     exists(documentId: string): Promise<boolean>;
 }

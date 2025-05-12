@@ -6,7 +6,6 @@ import { createOfferContainer } from './shared/modules/offer/offer.container.js'
 import { createUserContainer } from './shared/modules/user/user.container.js';
 import { AppComponent } from './shared/types/app-component.enum.js';
 
-
 async function bootstrap() {
   const mainContainer = Container.merge(
     createRestApplicationContainer(),
